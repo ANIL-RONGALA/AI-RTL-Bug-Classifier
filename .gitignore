@@ -1,0 +1,13 @@
+﻿# Python environment
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# Model artifacts
+src/*.pkl
+src/class_map.json
+
+# System files
+.DS_Store
+Thumbs.db
+

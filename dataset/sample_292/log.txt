@@ -1,0 +1,1 @@
+Error: width mismatch: assigning 4 bits to 2-bit signal 'y'.

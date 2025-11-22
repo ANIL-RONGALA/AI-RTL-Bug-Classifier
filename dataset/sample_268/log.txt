@@ -1,0 +1,1 @@
+Warning: Latch inferred for signal 'q'.
