@@ -1,137 +1,107 @@
-An experimental mini-project exploring how machine learning can support RTL-level verification.
-The goal is simple: classify common RTL bug types directly from Verilog code + error logs using a lightweight ML model.
+## AI-RTL-Bug-Classifier
 
-This project demonstrates how data-driven learning can assist early-stage debugging—an emerging theme in AI-EDA.
+A lightweight AI-EDA prototype that uses Verilog code and simulator logs to automatically find and fix common RTL design bugs.
+This project looks at how machine learning can help with early hardware verification by finding patterns in RTL bugs that happen over and over again.
 
-🚀 1. Motivation
+---
+## 🔍 Summary
 
-Hardware verification remains one of the costliest and slowest steps in the ASIC design flow.
-Many RTL bugs fall into recurring patterns—syntax slips, latch inference, missing defaults, width mismatches, and more.
+Debugging RTL is one of the steps in the design flow that takes the most time. A lot of bugs follow patterns that are easy to spot, like latch inference, width mismatches, and missing defaults.
+This project shows a small-scale, learning-based way to sort bugs right from:
 
-If a model can recognize these patterns automatically, tools could:
+Code in Verilog (code.v)
 
-Prioritize errors
+Logs of tool errors and warnings (log.txt)
 
-Suggest likely fixes
+The model uses TF-IDF features and Logistic Regression to guess what type of bug it is.
 
-Reduce triage time
+-----
 
-Enable intelligent verification assistants
+## 🧩 Types of Bugs
 
-This project builds a small-scale prototype to explore that idea.
+There are 8 common types of RTL bugs in the dataset:
 
-🧩 2. Problem Definition
+Bug Type: Syntax ErrorMissing symbols and wrong keywords
+latch_inferenceCombinational logic that doesn't have any else paths width_mismatchGiving bits with different widths
+blocking_misuseUsing = inside sequential logic unused_signalMissing wires/regs that have been declared but not useddefault case without a default branch
+multi-driverMultiple tasks for the same net comb_loopIn continuous assigns, there are circular dependencies Structure of the Project
 
-Given:
-
-RTL snippet (code.v)
-
-Compiler/simulator error log (log.txt)
-
-Predict:
-
-{ syntax_error, latch_inference, width_mismatch, blocking_misuse,
-  unused_signal, missing_default, multi_driver, comb_loop }
-
-📂 3. Repository Structure
+---
 AI-RTL-Bug-Classifier/
 │
-├── dataset/
+├── dataset/                 # 300 generated RTL bug samples
 │   ├── sample_001/
 │   │   ├── code.v
 │   │   ├── log.txt
 │   │   └── label.txt
-│   ├── sample_002/
-│   └── ...
-│
-├── notebooks/
-│   └── AI_EDA_RTL_Bug_Classifier.ipynb
 │
 ├── src/
-│   ├── dataset_generator.py
-│   ├── train.py
-│   ├── predict.py
-│   ├── utils.py
-│   └── class_map.json
+│   ├── dataset_generator.py  # Synthetic dataset generator
+│   ├── train.py              # Training script (TF-IDF + Logistic Regression)
+│   ├── predict.py            # Predict on new code/log
+│   ├── utils.py              # Dataset loading + label maps
+│   ├── model.pkl             # Saved model (generated after training)
+│   ├── vectorizer.pkl        # TF-IDF vectorizer (generated)
+│   └── class_map.json        # id → label mapping (generated)
+│
+├── notebooks/
+│   └── AI_EDA_RTL_Bug_Classifier.ipynb   # Experiment notebook
 │
 ├── requirements.txt
 └── README.md
 
-🛠 4. Model Architecture
-
-A simple but effective pipeline:
-
-Verilog + Log  →  TF-IDF vectorizer → Logistic Regression → Bug Class Prediction
 
 
-Why Logistic Regression?
+### Results of the training
 
-Fast
+The model does a great job on the structured synthetic dataset:
 
-Stable for small datasets
+Precision, Recall, and F1: 1.00 Accuracy: 100%
 
-Works well with sparse features
+The notebook has a confusion matrix that you can use to look at the data.
 
-Easy to interpret
+-------
 
-You can swap in SVM or RandomForest later.
+## 🚀 How to Run 1️⃣ Install dependencies pip install -r requirements.txt
 
-🗃 5. Dataset
+2. Create a dataset with python src/dataset_generator.py
 
-300 synthetically generated RTL bug samples.
+3. Train the model with the command python src/train.py
 
-Bugs covered:
+4. Make predictions on new RTL files
+python src/predict.py path/to/code.v path/to/log.txt
 
-Class	Description
-syntax_error	Missing semicolon, wrong keyword
-latch_inference	Missing else-causes causing latch
-width_mismatch	Assigning N-bit to M-bit
-blocking_misuse	Bad mix of = and <=
-unused_signal	Signal declared but never used
-missing_default	Case statement without default
-multi_driver	Multiple assignments to same net
-comb_loop	Always @(*) loops
-🧪 6. Results
-Metric	Score
-Accuracy	~90–95%
-F1-score	High for structured classes
-Confusion matrix	Included in notebook
+## 📘 Jupyter Notebook
 
-The model learns patterns from both the RTL and the logs, improving classification accuracy beyond using logs alone.
+### The notebook (notebooks/AI_EDA_RTL_Bug_Classifier.ipynb) has:
 
-📈 Confusion Matrix Preview
+Checking out the dataset
 
-A confusion matrix is automatically generated in the notebook to visualize error distribution.
+Analysis of TF-IDF
 
-📚 7. How to Run
-Install Dependencies
-pip install -r requirements.txt
+Pipeline for training
 
-Generate Dataset
-python src/dataset_generator.py
+Metrics for evaluation
 
-Train Model
-python src/train.py
+A way to see a confusion matrix
 
-Predict New Bug
-python src/predict.py test/code.v test/log.txt
+This gives a clear picture of how the experiment works.
 
-🔮 8. Future Work
+## 🔮 Work in the Future
 
-This prototype opens doors to deeper AI-EDA research:
+This prototype can be developed into a more sophisticated AI-EDA research trajectory:
 
-LLM-based Verilog embeddings
+Use dataflow graphs or Verilog AST
 
-Graph Neural Networks on AST/CFG
+Add LLM-based embeddings like CodeBERT and GPT-FPGA.
 
-Auto-fix suggestions
+Put in place suggestions for automatic fixes
 
-Learning from real simulation logs
+Use actual logs from Verilator, Questa, or VCS.
 
-Integrating with Verilator/Questa logs
+Add more types of bugs, like FSM issues, resets, and CDC problems.
 
-Fine-tuned small LLMs for RTL debugging
+## 👤 Writer
 
-📝 9. Citation / Usage
-
-This project may be freely used for education and research.
+Anil Rongala
+AI-EDA, Smart Verification, and Hardware-AI Co-Design
