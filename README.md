@@ -62,7 +62,8 @@ The notebook has a confusion matrix that you can use to look at the data.
 
 -------
 
-## 🚀 How to Run 1️⃣ Install dependencies pip install -r requirements.txt
+## 🚀 How to Run 
+1️⃣ Install dependencies pip install -r requirements.txt
 
 2. Create a dataset with python src/dataset_generator.py
 
