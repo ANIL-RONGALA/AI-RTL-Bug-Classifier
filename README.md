@@ -27,6 +27,7 @@ blocking_misuseUsing = inside sequential logic unused_signalMissing wires/regs t
 multi-driverMultiple tasks for the same net comb_loopIn continuous assigns, there are circular dependencies Structure of the Project
 
 ---
+```
 AI-RTL-Bug-Classifier/
 │
 ├── dataset/                 # 300 generated RTL bug samples
@@ -50,7 +51,7 @@ AI-RTL-Bug-Classifier/
 ├── requirements.txt
 └── README.md
 
-
+```
 
 ### Results of the training
 
