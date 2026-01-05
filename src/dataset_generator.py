@@ -112,7 +112,7 @@ def gen_blocking(template_id: int):
         code += f"    {tmp} = {d};\n"
         code += f"    {q} = {tmp};\n"
     code += "  end\nendmodule\n"
-    log = safe_log(f"Warning: assignment style in clocked block may cause mismatch for '{q}'.")
+    log = safe_log(f"Warning: assignment style in clocked block may cause unexpected behavior for '{q}'.")
     return "blocking_misuse", code, log, f"blocking_{template_id}"
 
 def gen_unused(template_id: int):

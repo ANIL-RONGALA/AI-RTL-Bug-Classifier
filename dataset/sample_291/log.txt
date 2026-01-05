@@ -1,1 +1,0 @@
-Error: combinational loop involving signals 'a' and 'b'.

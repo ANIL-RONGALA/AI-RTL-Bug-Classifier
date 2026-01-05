@@ -1,1 +1,0 @@
-Warning: signal 'temp' declared but never used.
