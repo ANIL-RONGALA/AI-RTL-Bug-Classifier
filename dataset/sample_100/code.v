@@ -1,1 +1,0 @@
-module m_4rida5(input a_1vfteg, b_g111wi output y_yqjvrf); assign y_yqjvrf = a_1vfteg & b_g111wi endmodule

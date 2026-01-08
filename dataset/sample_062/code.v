@@ -1,1 +1,0 @@
-module m_xrs8cr(input a_ckbj0h, b_1fokn4 output y_bw3uzg); assign y_bw3uzg = a_ckbj0h & b_1fokn4 endmodule

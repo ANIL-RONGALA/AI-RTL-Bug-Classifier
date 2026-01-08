@@ -1,1 +1,0 @@
-module m_f8ulgd(a_4m9ttj, b_x0grla, y_vgdu56) input a_4m9ttj, b_x0grla; output y_vgdu56 assign y_vgdu56 = a_4m9ttj | b_x0grla; endmodule

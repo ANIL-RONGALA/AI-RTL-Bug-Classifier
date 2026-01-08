@@ -1,1 +1,0 @@
-Warning: signal 'q_5v9pvl' may not be assigned on all control paths.

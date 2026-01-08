@@ -1,1 +1,0 @@
-Error: net 't_ucsoq1' is driven from more than one continuous source.

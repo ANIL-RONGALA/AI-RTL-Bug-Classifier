@@ -1,1 +1,0 @@
-Warning: signal 'q_13slqi' may not be assigned on all control paths.

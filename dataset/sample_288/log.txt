@@ -1,1 +1,0 @@
-Warning: signal 'q_4us1gv' may not be assigned on all control paths.

@@ -1,1 +1,0 @@
-Error: net 't_co1k0o' is driven from more than one continuous source.

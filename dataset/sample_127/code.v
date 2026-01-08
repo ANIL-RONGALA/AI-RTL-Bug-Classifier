@@ -1,1 +1,0 @@
-module m_dlz266(a_r49s5e, b_5wd9xb, y_ihxdju) input a_r49s5e, b_5wd9xb; output y_ihxdju assign y_ihxdju = a_r49s5e | b_5wd9xb; endmodule

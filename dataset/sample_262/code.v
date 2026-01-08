@@ -1,1 +1,0 @@
-module m_q7big9(a_kzkywi, b_8rwofh, y_42iynl) input a_kzkywi, b_8rwofh; output y_42iynl assign y_42iynl = a_kzkywi | b_8rwofh; endmodule

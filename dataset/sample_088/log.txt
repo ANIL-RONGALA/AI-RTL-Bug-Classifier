@@ -1,1 +1,0 @@
-Error: net 't_cfesf6' is driven from more than one continuous source.

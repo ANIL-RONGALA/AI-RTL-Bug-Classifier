@@ -1,1 +1,0 @@
-Error: zero-delay feedback detected among continuous assignments.

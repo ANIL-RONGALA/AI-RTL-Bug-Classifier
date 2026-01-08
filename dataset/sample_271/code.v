@@ -1,1 +1,0 @@
-module m_4cqjlu(a_bben65, b_tubhg8, y_6j4vrx) input a_bben65, b_tubhg8; output y_6j4vrx assign y_6j4vrx = a_bben65 | b_tubhg8; endmodule

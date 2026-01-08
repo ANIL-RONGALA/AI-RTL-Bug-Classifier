@@ -1,1 +1,0 @@
-Warning: signal 'q_vmvl1j' may not be assigned on all control paths.

@@ -1,1 +1,0 @@
-module m_vbf69b(a_te166w, b_dfok1a, y_8a0uvc) input a_te166w, b_dfok1a; output y_8a0uvc assign y_8a0uvc = a_te166w | b_dfok1a; endmodule

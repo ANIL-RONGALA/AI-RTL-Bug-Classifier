@@ -1,1 +1,0 @@
-module m_n9tu85(a_r0juix, b_6zvduk, y_h8d77k) input a_r0juix, b_6zvduk; output y_h8d77k assign y_h8d77k = a_r0juix | b_6zvduk; endmodule

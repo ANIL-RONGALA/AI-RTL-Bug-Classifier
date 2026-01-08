@@ -1,1 +1,0 @@
-module m_dfj6d2(input a_p1tlj1, b_wxskcz output y_fp98r6); assign y_fp98r6 = a_p1tlj1 & b_wxskcz endmodule

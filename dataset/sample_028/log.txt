@@ -1,1 +1,0 @@
-Warning: declaration 't_vt6i3b' does not affect outputs.

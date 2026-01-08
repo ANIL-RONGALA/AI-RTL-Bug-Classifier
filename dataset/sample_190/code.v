@@ -1,1 +1,0 @@
-module m_j19626(a_nf4xd0, b_u15mgp, y_t2imr8) input a_nf4xd0, b_u15mgp; output y_t2imr8 assign y_t2imr8 = a_nf4xd0 | b_u15mgp; endmodule

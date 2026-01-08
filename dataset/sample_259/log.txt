@@ -1,1 +1,0 @@
-Warning: declaration 't_thcelc' does not affect outputs.

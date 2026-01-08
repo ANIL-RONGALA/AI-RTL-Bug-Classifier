@@ -1,1 +1,0 @@
-Error: net 't_ro4u2t' is driven from more than one continuous source.
