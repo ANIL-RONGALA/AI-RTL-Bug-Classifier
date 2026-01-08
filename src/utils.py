@@ -11,16 +11,31 @@ DATASET_DIR = "dataset"
 
 def load_dataset(dataset_dir: str = DATASET_DIR) -> Tuple[List[str], List[str]]:
     """
-    Load (code + log) text and labels from the dataset directory.
+    Load (code + log) text and labels.
 
-    Returns:
-        texts: list of combined code + log strings
-        labels: list of label strings
+    Supports:
+      1) JSONL dataset file: dataset/dataset.jsonl
+      2) Legacy folder dataset: dataset/sample_001/...
     """
-    texts = []
-    labels = []
+    texts: List[str] = []
+    labels: List[str] = []
 
-    # dataset/sample_001, dataset/sample_002, ...
+    jsonl_path = os.path.join(dataset_dir, "dataset.jsonl")
+
+    # --- Preferred: JSONL ---
+    if os.path.exists(jsonl_path):
+        with open(jsonl_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                obj = json.loads(line)
+                combined = obj["code"] + "\n" + obj["log"]
+                texts.append(combined)
+                labels.append(obj["label"])
+        return texts, labels
+
+    # --- Fallback: legacy folder structure ---
     pattern = os.path.join(dataset_dir, "sample_*")
     for folder in glob.glob(pattern):
         code_path = os.path.join(folder, "code.v")
@@ -30,16 +45,17 @@ def load_dataset(dataset_dir: str = DATASET_DIR) -> Tuple[List[str], List[str]]:
         if not (os.path.exists(code_path) and os.path.exists(log_path) and os.path.exists(label_path)):
             continue
 
-        with open(code_path, "r") as f_code, open(log_path, "r") as f_log:
+        with open(code_path, "r", encoding="utf-8") as f_code, open(log_path, "r", encoding="utf-8") as f_log:
             combined = f_code.read() + "\n" + f_log.read()
 
-        with open(label_path, "r") as f_label:
+        with open(label_path, "r", encoding="utf-8") as f_label:
             label = f_label.read().strip()
 
         texts.append(combined)
         labels.append(label)
 
     return texts, labels
+
 
 
 def build_label_maps(labels: List[str]) -> Tuple[Dict[str, int], Dict[int, str], np.ndarray]:
