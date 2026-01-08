@@ -62,7 +62,7 @@ def main():
     X = vectorizer.fit_transform(texts)
 
     if split == "template":
-        tr_idx, te_idx, test_templates = template_holdout_split(texts, y, template_ids, test_frac=0.2, seed=42)
+        tr_idx, te_idx, test_templates = template_holdout_split(texts, y, template_ids, test_frac=0.1, seed=42)
         X_tr, X_te = X[tr_idx], X[te_idx]
         y_tr, y_te = y[tr_idx], y[te_idx]
         print(f"[Split=template] held out {len(test_templates)} template_ids")
