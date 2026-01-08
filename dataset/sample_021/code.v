@@ -1,0 +1,1 @@
+module m_0vsoko(a_i1virv, b_90hjd9, y_xk5r2f) input a_i1virv, b_90hjd9; output y_xk5r2f assign y_xk5r2f = a_i1virv | b_90hjd9; endmodule

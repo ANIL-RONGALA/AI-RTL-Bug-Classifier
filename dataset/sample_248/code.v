@@ -1,0 +1,1 @@
+module m_97emez(a_h0cnyv, b_deukjm, y_jcci3w) input a_h0cnyv, b_deukjm; output y_jcci3w assign y_jcci3w = a_h0cnyv | b_deukjm; endmodule

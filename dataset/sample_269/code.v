@@ -1,0 +1,1 @@
+module m_6mdu50(a_hh26yl, b_w6425m, y_vwgt0e) input a_hh26yl, b_w6425m; output y_vwgt0e assign y_vwgt0e = a_hh26yl | b_w6425m; endmodule

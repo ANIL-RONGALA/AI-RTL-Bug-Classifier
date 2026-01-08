@@ -1,0 +1,1 @@
+Warning: assignment style in clocked block may cause unexpected behavior for 'q_1ic19g'.

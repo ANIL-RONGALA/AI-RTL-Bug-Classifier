@@ -1,1 +1,1 @@
-Error: net 't_5surn7' is driven from more than one continuous source.
+Warning: signal 'q_hmisf6' may not be assigned on all control paths.

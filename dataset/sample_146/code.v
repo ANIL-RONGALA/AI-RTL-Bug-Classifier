@@ -1,0 +1,1 @@
+module m_yeykq5(input a_axxsmb, b_f2jlfi output y_ctoten); assign y_ctoten = a_axxsmb & b_f2jlfi endmodule

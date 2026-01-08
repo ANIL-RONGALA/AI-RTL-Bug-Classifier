@@ -1,0 +1,1 @@
+module m_vxvz2q(input a_eduz50, b_flu96q output y_a8utnv); assign y_a8utnv = a_eduz50 & b_flu96q endmodule

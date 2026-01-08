@@ -1,0 +1,1 @@
+module m_5pv79x(a_ndbu38, b_8zfinp, y_rxzt7f) input a_ndbu38, b_8zfinp; output y_rxzt7f assign y_rxzt7f = a_ndbu38 | b_8zfinp; endmodule

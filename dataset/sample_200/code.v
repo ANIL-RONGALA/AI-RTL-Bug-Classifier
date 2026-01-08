@@ -1,0 +1,1 @@
+module m_1srczl(a_ja5py0, b_oxsg1o, y_m5v04o) input a_ja5py0, b_oxsg1o; output y_m5v04o assign y_m5v04o = a_ja5py0 | b_oxsg1o; endmodule

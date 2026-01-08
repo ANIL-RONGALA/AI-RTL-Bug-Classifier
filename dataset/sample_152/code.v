@@ -1,0 +1,1 @@
+module m_447tvq(a_zvslog, b_0fw0bw, y_u4j03k) input a_zvslog, b_0fw0bw; output y_u4j03k assign y_u4j03k = a_zvslog | b_0fw0bw; endmodule

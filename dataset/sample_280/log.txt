@@ -1,0 +1,1 @@
+Error: net 't_rs6pne' is driven from more than one continuous source.

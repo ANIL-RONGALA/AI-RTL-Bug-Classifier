@@ -1,0 +1,1 @@
+module m_xkvyhb(a_vgq4p9, b_4z13bd, y_ygfesy) input a_vgq4p9, b_4z13bd; output y_ygfesy assign y_ygfesy = a_vgq4p9 | b_4z13bd; endmodule
