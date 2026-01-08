@@ -8,7 +8,7 @@ DATASET_DIR = "dataset"
 OUT_JSONL = os.path.join(DATASET_DIR, "dataset.jsonl")
 OUT_MANIFEST = os.path.join(DATASET_DIR, "manifest.csv")
 
-NUM_SAMPLES = 2000
+NUM_SAMPLES = 10000
 CLEAN_FRAC = 0.25
 
 # Ban obvious label words in logs
@@ -171,10 +171,9 @@ def gen_blocking(tid: int):
 # --------- FIXED HARD CLASSES (coherent families) ---------
 
 def gen_multi_driver(tid: int):
-    """
-    Coherent family: ONE wire driven by TWO continuous assigns.
-    """
     m = rident("m")
+
+    # make everything 2-bit
     a = rident("a")
     b = rident("b")
     c = rident("c")
@@ -182,29 +181,20 @@ def gen_multi_driver(tid: int):
     t = rident("t")
 
     code = (
-        f"module {m}(input {a}, input {b}, input {c}, output {y});\n"
-        f"{distractor_block(a,b)}"
-        f"  wire {t};\n"
+        f"module {m}(input [1:0] {a}, input [1:0] {b}, input [1:0] {c}, output [1:0] {y});\n"
+        f"  wire [1:0] {t};\n"
     )
 
-    if tid % 5 == 0:
+    # consistent family: two assigns to same net
+    if tid % 3 == 0:
         code += f"  assign {t} = {a} & {b};\n"
         code += f"  assign {t} = {c};\n"
-    elif tid % 5 == 1:
-        code += f"  assign {t} = ({a} | {b});\n"
-        code += f"  assign {t} = ({c} & {a});\n"
-    elif tid % 5 == 2:
-        u = rident("u")
-        code += f"  wire {u};\n"
-        code += f"  assign {u} = {a} ^ {b};\n"
-        code += f"  assign {t} = {u};\n"
+    elif tid % 3 == 1:
+        code += f"  assign {t} = {{ {a}[0], {b}[0] }};\n"
         code += f"  assign {t} = {c};\n"
-    elif tid % 5 == 3:
-        code += f"  assign {t} = ({a} ? {b} : {c});\n"
-        code += f"  assign {t} = ({c} ? {a} : {b});\n"
     else:
-        code += f"  assign {t} = {c};\n"
-        code += f"  assign {t} = {a} & {b};\n"
+        code += f"  assign {t} = {a};\n"
+        code += f"  assign {t} = {b};\n"
 
     code += (
         f"  assign {y} = {t};\n"
@@ -306,7 +296,7 @@ def gen_unused(tid: int):
     code = (
         f"module {m}(input {a}, input {b}, output {y});\n"
         f"{distractor_block(a,b)}"
-        f"  wire {t};\n"
+        f'  (* keep = "true" *) wire {t};\n'
     )
 
     if tid % 2 == 0:

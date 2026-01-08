@@ -70,7 +70,7 @@ def main():
         X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
         print("[Split=random] stratified random split")
 
-    clf = LogisticRegression(max_iter=2000)
+    clf = LogisticRegression(max_iter=10000)
     clf.fit(X_tr, y_tr)
 
     y_pred = clf.predict(X_te)
